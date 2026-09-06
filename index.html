@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080604">
+<title>Home Lanches Delivery</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:#070605;color:#fff;font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden;
+}
+header{
+  position:fixed;top:0;left:0;width:100%;z-index:100;
+  background:rgba(8,6,4,.84);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,177,0,.25);
+}
+.nav{
+  width:min(1150px,92%);height:70px;margin:auto;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{font-size:24px;font-weight:1000;letter-spacing:.5px}
+.logo span{color:#ffb400}
+nav a{color:#fff;text-decoration:none;font-weight:800;margin-left:25px;transition:.2s}
+nav a:hover{color:#ffb400}
+.hero{
+  min-height:100vh;padding:100px 4% 55px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 75% 45%,rgba(255,145,0,.18),transparent 32%),
+    radial-gradient(circle at 15% 30%,rgba(110,30,0,.2),transparent 35%),
+    #080604;
+}
+.hero:before{
+  content:"";position:absolute;inset:-50%;
+  background:repeating-radial-gradient(circle,transparent 0 90px,rgba(255,170,0,.025) 91px 92px);
+  animation:backgroundMove 22s linear infinite;
+}
+@keyframes backgroundMove{to{transform:rotate(360deg)}}
+.hero-inner{
+  width:min(1200px,100%);display:grid;
+  grid-template-columns:.85fr 1.15fr;align-items:center;
+  gap:35px;position:relative;z-index:2;
+}
+.copy{animation:rise .8s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.badge{
+  display:inline-block;background:#ffb400;color:#080604;
+  padding:9px 15px;font-size:13px;font-weight:1000;
+  transform:skew(-8deg);border-radius:3px;
+}
+h1{
+  font-size:clamp(48px,7vw,88px);line-height:.87;
+  text-transform:uppercase;font-weight:1000;margin:18px 0;
+}
+h1 span{color:#ffb400;text-shadow:0 0 30px rgba(255,180,0,.18)}
+.copy p{max-width:500px;color:#d0d0d0;font-size:19px;line-height:1.55;margin-bottom:24px}
+.buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  min-height:52px;padding:0 22px;border-radius:12px;
+  display:inline-flex;align-items:center;justify-content:center;
+  text-decoration:none;font-weight:1000;transition:.22s;
+}
+.btn:hover{transform:translateY(-4px) scale(1.02)}
+.primary{background:#18c957;color:#fff;box-shadow:0 10px 30px rgba(24,201,87,.18)}
+.secondary{border:2px solid #ffb400;color:#ffb400}
+.secondary:hover{background:#ffb400;color:#090604}
+.banner{
+  width:min(680px,100%);margin:auto;display:block;
+  border-radius:22px;
+  box-shadow:0 25px 90px rgba(0,0,0,.7);
+  transition:transform .45s,box-shadow .45s;
+  animation:float 5s ease-in-out infinite;
+}
+.banner:hover{transform:scale(1.025);box-shadow:0 30px 100px rgba(255,150,0,.16)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+section{padding:85px 5%}
+.title{text-align:center;margin-bottom:42px}
+.title h2{font-size:clamp(32px,5vw,48px);text-transform:uppercase;font-weight:1000}
+.title span{color:#ffb400}
+.title p{color:#999;margin-top:10px}
+.features{
+  width:min(1100px,100%);margin:auto;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+}
+.feature{
+  background:linear-gradient(145deg,#1b1713,#0f0d0b);
+  border:1px solid #302920;border-radius:20px;padding:30px;
+  transition:.25s;
+}
+.feature:hover{transform:translateY(-8px);border-color:#ffb400;box-shadow:0 18px 40px rgba(0,0,0,.5)}
+.feature .icon{font-size:38px;margin-bottom:15px}
+.feature h3{color:#ffb400;font-size:21px;margin-bottom:10px}
+.feature p{color:#aaa;line-height:1.55}
+.cta{
+  width:min(900px,100%);margin:auto;text-align:center;
+  padding:58px 25px;border-radius:25px;
+  background:linear-gradient(135deg,#4c2500,#b15a00,#e5a400);
+  box-shadow:0 25px 70px rgba(0,0,0,.55);
+}
+.cta h2{font-size:clamp(35px,6vw,58px);text-transform:uppercase}
+.cta p{margin:12px 0 24px;color:#fff;font-size:18px}
+footer{text-align:center;padding:30px 20px;color:#777;border-top:1px solid #25211d}
+.fixed-wa{
+  position:fixed;right:22px;bottom:22px;z-index:120;
+  width:64px;height:64px;border-radius:50%;
+  display:grid;place-items:center;text-decoration:none;
+  background:#18c957;color:#fff;font-size:29px;font-weight:900;
+  box-shadow:0 10px 30px #000;transition:.2s;
+}
+.fixed-wa:hover{transform:scale(1.1)}
+@media(max-width:850px){
+  nav{display:none}
+  .hero{padding-top:100px}
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .copy p{margin-left:auto;margin-right:auto}
+  .buttons{justify-content:center}
+  .banner{max-width:520px}
+  .features{grid-template-columns:1fr}
+  section{padding:70px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav">
+  <div class="logo">HOME <span>LANCHES</span></div>
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#pedido">Pedido</a>
+  </nav>
+</div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div class="copy">
+      <div class="badge">DELIVERY • PEDIDO PELO WHATSAPP</div>
+      <h1>SABOR QUE<br><span>CONQUISTA</span></h1>
+      <p>Um lanche caprichado, ingredientes frescos e aquele sabor que vira rotina. Faça seu pedido e aproveite!</p>
+      <div class="buttons">
+        <a class="btn primary" href="https://wa.me/5514935012021?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido." target="_blank">PEDIR PELO WHATSAPP</a>
+        <a class="btn secondary" href="#sobre">CONHECER</a>
+      </div>
+    </div>
+    <img class="banner" src="banner.png" alt="Home Lanches">
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="title">
+    <h2>O sabor que <span>conquista</span></h2>
+    <p>Qualidade e carinho em cada pedido.</p>
+  </div>
+  <div class="features">
+    <article class="feature">
+      <div class="icon">🥩</div>
+      <h3>CARNE MACIA</h3>
+      <p>Lanches preparados para entregar sabor e uma experiência deliciosa em cada mordida.</p>
+    </article>
+    <article class="feature">
+      <div class="icon">🌿</div>
+      <h3>INGREDIENTES FRESCOS</h3>
+      <p>Ingredientes selecionados para deixar seu lanche ainda mais especial.</p>
+    </article>
+    <article class="feature">
+      <div class="icon">❤️</div>
+      <h3>FEITO COM CARINHO</h3>
+      <p>Tudo preparado com cuidado para chegar até você do jeito que merece.</p>
+    </article>
+  </div>
+</section>
+
+<section id="pedido">
+  <div class="cta">
+    <h2>Peça agora!</h2>
+    <p>Sinta essa delícia no primeiro mordida. Faça seu pedido pelo WhatsApp.</p>
+    <a class="btn primary" href="https://wa.me/5514935012021?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido." target="_blank">FAZER MEU PEDIDO</a>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 Home Lanches Delivery — Sabor que conquista.</footer>
+<a class="fixed-wa" href="https://wa.me/5514935012021?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido." target="_blank" aria-label="WhatsApp">☎</a>
+
+</body>
+</html>
